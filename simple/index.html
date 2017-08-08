@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+<div id="app">
+    <my-component wd="200" bg="red">
+        <div>i am my component child</div>
+    </my-component>
+</div>
+<script>
+    Vue.component('my-component', {
+        //functional: true,
+        methods: {
+            handleClick(e){
+                alert("my component click");
+            }
+        },
+        template:`<div class="wd" height="600"
+                          v-bind:width="wd"
+                          v-on:click="handleClick">
+                         <h3>my component</h3>
+                         <slot/>
+                  </div>`,
+        props: {
+            wd:{
+                type:String,
+                required:true
+            },
+            bg:{
+                type:String,
+                required:true
+            }
+        }
+    });
+    new Vue({el:'#app'});
+</script>
+</body>
+</html>
