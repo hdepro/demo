@@ -32,3 +32,4 @@ new Vue({
     render: h => h(Page)
 }).$mount('#vue');
 
+

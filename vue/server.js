@@ -11,7 +11,11 @@ const server = http.createServer((request,response)=>{
     console.log(pathname);
     pathname = pathname.slice(1);
     console.log("slice",pathname);
-    if(!/.js|.css$/.test(pathname)){
+    if(/^api/.test(pathname)){
+        console.log("api enter ");
+        let testData = {data:["list1","list2","list3"]};
+        response.end(JSON.stringify(testData));
+    }else if(!/.js|.css$/.test(pathname)){
         fs.readFile('./vue.html',(err,data)=>{
             if(err) console.log("res err ",err);
             else response.end(data);
